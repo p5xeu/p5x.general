@@ -1,0 +1,20 @@
+---
+argument_specs:
+  main:
+    short_description: Install docker
+    description:
+      - Install docker on a host
+    options:
+      docker_ipv6_enabled:
+        type: 'bool'
+        default: true
+        required: false
+        description:
+          - 'Enable IPv6 for docker daemon'
+      docker_ipv6_cidr:
+        type: 'str'
+        default: '2001:780:250:9::/64'
+        required: false
+        description:
+          - 'IPv6 cidr to use for new networks'
+...

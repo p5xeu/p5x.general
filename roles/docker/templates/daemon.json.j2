@@ -1,0 +1,6 @@
+{
+    "ipv6": {{ docker_ipv6_enabled | bool | lower }},
+    "fixed-cidr-v6": "{{ docker_ipv6_cidr }}",
+    "experimental": true,
+    "ip6tables": true
+}

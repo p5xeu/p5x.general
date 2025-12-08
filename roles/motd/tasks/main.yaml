@@ -1,0 +1,29 @@
+---
+- name: Install Packages
+  ansible.builtin.package:
+    name:
+      - 'neofetch'
+
+- name: Create /etc/neofetch
+  ansible.builtin.file:
+    path: '/etc/neofetch'
+    state: 'directory'
+    mode: '0755'
+
+- name: Copy neofetch config to hosts
+  ansible.builtin.copy:
+    src: 'neofetch.conf'
+    dest: '/etc/neofetch/config.conf'
+    mode: '0755'
+
+- name: Template motd.sh to /etc/profile.d/motd.sh
+  ansible.builtin.copy:
+    content: 'neofetch --config /etc/neofetch/config.conf'
+    dest: '/etc/profile.d/motd.sh'
+    mode: "0744"
+
+- name: Remove file /etc/motd
+  ansible.builtin.file:
+    path: '/etc/motd'
+    state: 'absent'
+...

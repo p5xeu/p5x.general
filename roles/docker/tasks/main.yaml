@@ -1,0 +1,38 @@
+---
+- name: 'Add apt repo'
+  ansible.builtin.deb822_repository:
+    name: 'Docker'
+    types: 'deb'
+    uris: 'https://download.docker.com/linux/debian'
+    suites: 'bookworm'
+    components:
+      - 'stable'
+    signed_by: 'https://download.docker.com/linux/debian/gpg'
+
+- name: 'Install packages'
+  ansible.builtin.apt:
+    pkg:
+      - 'docker-ce'
+      - 'docker-ce-cli'
+      - 'containerd.io'
+      - 'docker-buildx-plugin'
+      - 'docker-compose-plugin'
+    update_cache: true
+    state: 'present'
+
+- name: 'Create daemon config'
+  ansible.builtin.template:
+    src: 'daemon.json.j2'
+    dest: '/etc/docker/daemon.json'
+    owner: 'root'
+    group: 'root'
+    mode: '0640'
+  notify: 'Restart docker service'
+
+- name: 'Enable docker service'
+  ansible.builtin.systemd_service:
+    name: 'docker'
+    enabled: true
+    daemon_reload: true
+  notify: 'Restart docker service'
+...
