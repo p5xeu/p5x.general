@@ -2,23 +2,23 @@
 - name: Install Packages
   ansible.builtin.package:
     name:
-      - 'neofetch'
+      - 'fastfetch'
 
-- name: Create /etc/neofetch
+- name: Create /etc/fastfetch
   ansible.builtin.file:
-    path: '/etc/neofetch'
+    path: '/etc/fastfetch'
     state: 'directory'
     mode: '0755'
 
-- name: Copy neofetch config to hosts
+- name: Copy fastfetch config to hosts
   ansible.builtin.copy:
-    src: 'neofetch.conf'
-    dest: '/etc/neofetch/config.conf'
+    src: 'fastfetch.jsonc'
+    dest: '/etc/fastfetch/fastfetch.jsonc'
     mode: '0755'
 
 - name: Template motd.sh to /etc/profile.d/motd.sh
   ansible.builtin.copy:
-    content: 'neofetch --config /etc/neofetch/config.conf'
+    content: 'fastfetch'
     dest: '/etc/profile.d/motd.sh'
     mode: "0744"
 
