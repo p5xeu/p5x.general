@@ -1,0 +1,8 @@
+---
+- name: 'OS updates'
+  hosts: '{{target|default("all")}}'
+  tasks:
+    - name: 'Perform Host OS updates'
+      ansible.builtin.include_role:
+        name: 'p5x.general.os_update'
+...

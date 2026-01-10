@@ -1,0 +1,20 @@
+---
+argument_specs:
+  main:
+    short_description: 'The main entry point for the os update role.'
+    description:
+      - 'Role to perfome host os updates.'
+      - 'Supported distributions:'
+      - '- Debian'
+      - '- Alpine'
+      - '- RedHat'
+    author:
+      - 'Lars Lehmann <lars@lars-lehmann.net>'
+    options:
+      os_update_auto_reboot:
+        type: 'bool'
+        required: false
+        default: true
+        description:
+          - 'If true, the host will be restarted if necessary.'
+...

@@ -1,0 +1,7 @@
+---
+galaxy_info:
+  author: 'Lars Lehmann'
+  description: 'OS update role'
+  min_ansible_version: '2.15'
+  license: 'GPL-2.0-or-later'
+...
