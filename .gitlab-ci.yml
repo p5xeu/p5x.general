@@ -5,8 +5,8 @@ include:
     ref: main
 
 # Override docker-build job vars
-docker-build:
+image-build:
   variables:
-    DOCKER_BUILD_EXTRAARGS: --build-arg COLLECTION_REPO=git+ssh://git@${CI_SERVER_HOST}:${CI_SERVER_SHELL_SSH_PORT}/${CI_PROJECT_PATH}.git
-      --build-arg COLLECTION_VERSION=${CI_COMMIT_REF_NAME}
+    BUILDKIT_BUILD_EXTRAARGS: --opt build-arg:COLLECTION_REPO=git+ssh://git@${CI_SERVER_HOST}:${CI_SERVER_SHELL_SSH_PORT}/${CI_PROJECT_PATH}.git
+      --opt build-arg:COLLECTION_VERSION=${CI_COMMIT_REF_NAME}
 ...
