@@ -8,7 +8,7 @@
 - name: 'RedHat: Check if a reboot is needed'
   when: 'os_update_auto_reboot'
   block:
-    - name: 'RedHat: Check if Reboot required' # noqa command-instead-of-module
+    - name: 'RedHat: Check if Reboot required' # noqa command-instead-of-module inline-env-var
       register: 'os_update_reboot_required'
       ansible.builtin.command:
         cmd: 'yum needs-restarting -r'
