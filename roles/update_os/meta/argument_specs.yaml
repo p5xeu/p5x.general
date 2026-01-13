@@ -11,7 +11,7 @@ argument_specs:
     author:
       - 'Lars Lehmann <lars@lars-lehmann.net>'
     options:
-      os_update_auto_reboot:
+      update_os_auto_reboot:
         type: 'bool'
         required: false
         default: true

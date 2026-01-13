@@ -6,10 +6,10 @@
     upgrade: true
 
 - name: 'Debian: Check if a reboot is needed'
-  when: 'os_update_auto_reboot'
+  when: 'update_os_auto_reboot'
   block:
     - name: 'Debian: Check if a reboot-required file exists'
-      register: 'os_update_reboot_required_file'
+      register: 'update_os_reboot_required_file'
       ansible.builtin.stat:
         path: '/var/run/reboot-required'
 
@@ -21,5 +21,5 @@
         pre_reboot_delay: 0
         post_reboot_delay: 30
         test_command: 'uptime'
-      when: 'os_update_reboot_required_file.stat.exists'
+      when: 'update_os_reboot_required_file.stat.exists'
 ...

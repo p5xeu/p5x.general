@@ -6,15 +6,15 @@
     update_cache: true
 
 - name: 'RedHat: Check if a reboot is needed'
-  when: 'os_update_auto_reboot'
+  when: 'update_os_auto_reboot'
   block:
     - name: 'RedHat: Check if Reboot required' # noqa command-instead-of-module inline-env-var
-      register: 'os_update_reboot_required'
+      register: 'update_os_reboot_required'
       ansible.builtin.command:
         cmd: 'yum needs-restarting -r'
         warn: false
-      failed_when: '( os_update_reboot_required.rc not in [ 0, 1 ] )'
-      changed_when: 'os_update_reboot_required.rc == 1'
+      failed_when: '( update_os_reboot_required.rc not in [ 0, 1 ] )'
+      changed_when: 'update_os_reboot_required.rc == 1'
 
     - name: 'RedHat: Reboot the box if kernel updated'
       ansible.builtin.reboot:
@@ -24,5 +24,5 @@
         pre_reboot_delay: 0
         post_reboot_delay: 30
         test_command: 'uptime'
-      when: 'os_update_reboot_required.rc == 1'
+      when: 'update_os_reboot_required.rc == 1'
 ...

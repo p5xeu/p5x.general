@@ -6,5 +6,6 @@
   tasks:
     - name: 'Perform Host OS updates'
       ansible.builtin.include_role:
-        name: 'p5xeu.general.os_update'
+        name: 'p5xeu.general.update_os'
+      when: role_update_os_enabled | default(true)
 ...

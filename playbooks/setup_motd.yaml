@@ -1,0 +1,11 @@
+---
+- name: 'Install motd customizations'
+  hosts: '{{ target | default("all") }}'
+  remote_user: 'root'
+  gather_facts: true
+  tasks:
+    - name: 'Install motd customizations'
+      ansible.builtin.include_role:
+        name: 'p5xeu.general.setup_motd'
+      when: role_setup_motd_enabled | default(true)
+...

@@ -1,6 +1,6 @@
 {
-  "ipv6": {{ docker_ipv6_enabled | bool | lower }},
-  "fixed-cidr-v6": "{{ docker_ipv6_cidr | ansible.utils.ipsubnet(docker_ipv6_subnet_size, 0) }}",
+  "ipv6": {{ setup_docker_ipv6_enabled | bool | lower }},
+  "fixed-cidr-v6": "{{ setup_docker_ipv6_cidr | ansible.utils.ipsubnet(setup_docker_ipv6_subnet_size, 0) }}",
   "experimental": true,
   "ip6tables": true,
   "default-address-pools": [
@@ -33,8 +33,8 @@
       "size": 20
     },
     {
-      "base": "{{ docker_ipv6_cidr }}",
-      "size": {{ docker_ipv6_subnet_size }}
+      "base": "{{ setup_docker_ipv6_cidr }}",
+      "size": {{ setup_docker_ipv6_subnet_size }}
     }
   ]
 }

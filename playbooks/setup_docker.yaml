@@ -1,0 +1,11 @@
+---
+- name: 'Install Docker'
+  hosts: '{{ target | default("all") }}'
+  remote_user: 'root'
+  gather_facts: true
+  tasks:
+    - name: 'Install Docker'
+      ansible.builtin.include_role:
+        name: 'p5xeu.general.setup_docker'
+      when: role_setup_docker_enabled | default(true)
+...
