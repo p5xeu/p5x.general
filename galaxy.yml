@@ -17,6 +17,7 @@ readme: README.md
 # @nicks:irc/im.site#channel'
 authors:
   - Lars Lehmann <lars@lars-lehmann.net> (larsl.net)
+  - Fritz Zenger <fritz@doofkopf.de> (f-zenger.net)
 
 ### OPTIONAL but strongly recommended
 # A short summary description of the collection
@@ -42,6 +43,7 @@ tags: ["infrastructure", "linux"]
 dependencies:
   ansible.utils: '>=6.0.0'
   community.general: '>=12.0.0'
+  prometheus.prometheus: '>=0.27.5'
 
 # The URL of the originating SCM repository
 repository: https://github.com/p5xeu/p5xeu.general
