@@ -5,6 +5,18 @@ argument_specs:
     description:
       - Install docker on a host
     options:
+      setup_docker_ipv4_cidr:
+        type: 'str'
+        default: '172.30.0.0/16'
+        required: false
+        description:
+          - 'IPv4 cidr to use for new networks'
+      setup_docker_ipv4_subnet_size:
+        type: 'int'
+        default: 26
+        required: false
+        description:
+          - 'Size of new IPv4 subnets'
       setup_docker_ipv6_enabled:
         type: 'bool'
         default: true
