@@ -7,5 +7,7 @@
     - name: 'Install cAdvisor'
       ansible.builtin.include_role:
         name: 'prometheus.prometheus.cadvisor'
+      vars:
+        cadvisor_port: 9101
       when: role_setup_cadvisor_enabled | default(true)
 ...
