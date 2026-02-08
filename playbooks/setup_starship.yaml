@@ -1,0 +1,11 @@
+---
+- name: 'Install Starship'
+  hosts: '{{ target | default("all") }}'
+  remote_user: 'root'
+  gather_facts: true
+  tasks:
+    - name: 'Install Starship'
+      ansible.builtin.include_role:
+        name: 'p5xeu.general.setup_starship'
+      when: role_setup_starship_enabled | default(true)
+...

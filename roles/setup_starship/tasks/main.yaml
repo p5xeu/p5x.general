@@ -1,0 +1,11 @@
+---
+- name: 'Setup on Mac'
+  ansible.builtin.include_tasks:
+    file: 'setup_darwin.yaml'
+  when: 'ansible_facts[''os_family''] == ''Darwin'''
+
+- name: 'Setup on Debian'
+  ansible.builtin.include_tasks:
+    file: 'setup_debian.yaml'
+  when: 'ansible_facts[''os_family''] == ''Debian'''
+...
