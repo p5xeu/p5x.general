@@ -1,0 +1,11 @@
+---
+- name: 'Install Podman'
+  hosts: '{{ target | default("all") }}'
+  remote_user: 'root'
+  gather_facts: true
+  tasks:
+    - name: 'Install Podman'
+      ansible.builtin.include_role:
+        name: 'p5xeu.general.setup_podman'
+      when: role_setup_podman_enabled | default(true)
+...

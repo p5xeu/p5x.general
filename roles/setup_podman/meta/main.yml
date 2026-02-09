@@ -1,0 +1,20 @@
+---
+galaxy_info:
+  author: Lars Lehmann
+  description: Install podman
+  # company: p5x
+
+  role_name: setup_podman
+  namespace: p5x
+
+  license: BSD-3-Clause
+  min_ansible_version: '2.16'
+  platforms:
+    - name: Debian
+      versions:
+        - bookworm
+
+  galaxy_tags: []
+
+dependencies: []
+...

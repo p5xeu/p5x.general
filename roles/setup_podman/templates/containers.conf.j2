@@ -1,0 +1,9 @@
+[engine]
+network_cmd_options = [
+  "enable_ipv6={{ setup_podman_ipv6_enabled | bool | lower }}"
+]
+
+[network]
+default_subnet_pools = [
+   {"base" = "{{ setup_podman_ipv4_cidr }}", "size" = {{ setup_podman_ipv4_subnet_size }}},
+]
