@@ -19,7 +19,6 @@
 
 - name: 'Template Config'
   ansible.builtin.template:
-    state: 'present'
     src: 'starship.toml.j2'
     dest: '/etc/starship/starship.toml'
     owner: 'root'
