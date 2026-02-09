@@ -1,0 +1,46 @@
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$docker_context\
+$cmd_duration\
+$fill\
+$kubernetes\
+$time\
+$line_break\
+$jobs\
+$battery\
+$status\
+$os\
+$container\
+$netns\
+$shell\
+$character"""
+
+[username]
+format="[$user]($style)"
+
+[hostname]
+ssh_symbol = '@'
+format = '$ssh_symbol[$hostname]($style) '
+
+[kubernetes]
+disabled=false
+format='[$symbol$context( \($namespace\))]($style) '
+
+[[kubernetes.contexts]]
+context_pattern = "(.*)/api-(.*):6443/(.*)"
+style = "green"
+symbol = "🎮 "
+context_alias = "$2"
+
+[time]
+disabled=false
