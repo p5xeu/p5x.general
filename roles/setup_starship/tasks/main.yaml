@@ -8,24 +8,4 @@
   ansible.builtin.include_tasks:
     file: 'setup_debian.yaml'
   when: 'ansible_facts[''os_family''] == ''Debian'''
-
-- name: 'Create Config directory'
-  ansible.builtin.file:
-    state: 'directory'
-    path: '/etc/starship/'
-    owner: 'root'
-    group: 'wheel'
-    mode: '0755'
-  become: true
-  become_user: root
-
-- name: 'Template Config'
-  ansible.builtin.template:
-    src: 'starship.toml.j2'
-    dest: '/etc/starship/starship.toml'
-    owner: 'root'
-    group: 'wheel'
-    mode: '0644'
-  become: true
-  become_user: root
 ...
