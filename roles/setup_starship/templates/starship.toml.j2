@@ -1,9 +1,4 @@
 format = """
-$username\
-$hostname\
-$localip\
-$shlvl\
-$singularity\
 $directory\
 $git_branch\
 $git_commit\
@@ -14,6 +9,8 @@ $docker_context\
 $cmd_duration\
 $fill\
 $kubernetes\
+$username\
+$hostname\
 $time\
 $line_break\
 $jobs\
@@ -25,22 +22,34 @@ $netns\
 $shell\
 $character"""
 
+[directory]
+format = '[╭─](dimmed red) [$path]($style)[$read_only]($read_only_style) '
+
+[fill]
+symbol = "─"
+style = "dimmed red"
+
 [username]
-format="[$user]($style)"
+format = "[–](dimmed red) [$user]($style)"
+style_user = "bold dimmed yellow"
+style_root = "bold red"
 
 [hostname]
 ssh_symbol = '@'
-format = '$ssh_symbol[$hostname]($style) '
+format = '$ssh_symbol[$hostname]($style)'
+style = "bold dimmed yellow"
 
 [kubernetes]
-disabled=false
-format='[$symbol$context( \($namespace\))]($style) '
+disabled = false
+format = '[$symbol$context( \($namespace\))]($style) '
+style = "dimmed green"
+symbol = " 🎮 "
 
 [[kubernetes.contexts]]
 context_pattern = "(.*)/api-(.*):6443/(.*)"
-style = "green"
-symbol = "🎮 "
 context_alias = "$2"
 
 [time]
-disabled=false
+disabled = false
+style = "bold dimmed cyan"
+format = ' at [$time]($style) [─](dimmed red)'
